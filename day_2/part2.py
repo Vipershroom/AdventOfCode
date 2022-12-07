@@ -19,27 +19,31 @@ def parse(text):
         
         return decision(textArr)
         
-# A, X = rock
-# B, Y = paper
-# C, Z = scissors 
+# A = rock
+# B = paper
+# C = scissors 
+
+# Y = Draw
+# X = Lose
+# Z = Win
 def decision(textArr):
     score = 0
     print(textArr[2])
     # Rock
     if textArr[0] == "A":
-        # Rock V Paper 8
+        # Rock V Rock 4
         if textArr[2] == "Y":
-            score = updateScore(play["paper"], outcome["win"], score)
+            score = updateScore(play["rock"], outcome["draw"], score)
             print(textArr)
         
 
-        # Rock V Scissors 3
+        # Rock V Paper
         elif textArr[2] == "Z":
-            score = updateScore(play["scissors"], outcome["loss"], score)
+            score = updateScore(play["paper"], outcome["win"], score)
             
-        # Rock V Rock 4
+        # Rock V scissors
         elif textArr[2] == "X":
-            score = updateScore(play["rock"], outcome["draw"], score)
+            score = updateScore(play["scissors"], outcome["loss"], score)
             
     if textArr[0] == "B":
         # Paper V Rock 7
@@ -55,17 +59,17 @@ def decision(textArr):
             score = updateScore(play["paper"], outcome["draw"], score)
             
     if textArr[0] == "C":
-        # Scissors V Paper 2
+        # Scissors V scissors 2
         if textArr[2] == "Y":
-            score = updateScore(play["paper"], outcome["loss"], score)
-
-        # Scissors V Rock
-        elif textArr[2] == "X":
-            score = updateScore(play["rock"], outcome["win"], score)
-            
-        # Scissors V Scissors
-        elif textArr[2] == "Z":
             score = updateScore(play["scissors"], outcome["draw"], score)
+
+        # Scissors V Paper
+        elif textArr[2] == "X":
+            score = updateScore(play["paper"], outcome["loss"], score)
+            
+        # Scissors V rock
+        elif textArr[2] == "Z":
+            score = updateScore(play["rock"], outcome["win"], score)
         
     print(score)
     return score
@@ -79,14 +83,3 @@ with open("puzzle.txt") as f:
     for i in lines:
         scoreList.append(parse(i))
     print(sum(scoreList))
-    
-    
-        
-    
-    
-            
-    
-
-    
-
-    
