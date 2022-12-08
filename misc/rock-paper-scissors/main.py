@@ -22,19 +22,13 @@ def decision(playerInp, computerInp):
     decisionDict1 = {
         playerInp: computerInp
     }
-    decisionDict2 = {
-        computerInp: playerInp
-    }
     if playerInp == computerInp:
         return "draw"
     for x,y in victories.items():
         for a,b in decisionDict1.items():
             if (x,y) == (a,b):
                     return True
-    for x,y in victories.items():
-        for a,b in decisionDict2.items():
-            if (x,y) == (a,b):
-                    return False    
+    return False   
 
 def main():
     playerPlay = playerInput()
